@@ -7,10 +7,11 @@ namespace BookingManager.Data
     {
         public BookingManagerDBContext(DbContextOptions<BookingManagerDBContext> options) : base(options)
         { }
-        DbSet<Customer> customers;
-        DbSet<Table> tables;
-        DbSet<Booking> bookings;
-        DbSet<Course> courses;
-        DbSet<Admin> admins;
+
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Table> Tables { get; set; }
+        public DbSet<Booking> Bookings { get; set; }
+        public DbSet<Course> Courses { get; set; }
+        public DbSet<Admin> Admins { get; set; }
     }
 }
