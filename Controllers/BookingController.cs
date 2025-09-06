@@ -45,7 +45,7 @@ namespace BookingManager.Controllers
         public async Task<ActionResult<BookingDTO>> UpdateBooking(int id, [FromBody] BookingDTO booking)
         {
             if (booking == null) { return BadRequest(); }
-            var updatedBooking = await _bookingService.UpdateBooking(booking, id);
+            var updatedBooking = await _bookingService.UpdateBookingAsync(booking, id);
             if (updatedBooking == null) { return NotFound(); }
             return Ok(updatedBooking);
         }

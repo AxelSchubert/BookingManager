@@ -38,7 +38,7 @@ namespace BookingManager.Services
             if (booking.CustomerId != null) { currentBooking.CustomerId = booking.CustomerId.Value; }
             if (booking.TableId != null) { currentBooking.TableId = booking.TableId.Value; }
 
-            var updatedBooking = await _repository.UpdateBooking(currentBooking);
+            var updatedBooking = await _repository.UpdateBookingAsync(currentBooking);
 
             return new BookingDTO
             {

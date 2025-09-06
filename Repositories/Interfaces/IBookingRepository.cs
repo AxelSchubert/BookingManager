@@ -5,7 +5,7 @@ namespace BookingManager.Repositories.Interfaces
     public interface IBookingRepository
     {
         Task<List<Booking>> GetAllBookingsAsync();
-        Task<Booking?> UpdateBooking(Booking booking); 
+        Task<Booking?> UpdateBookingAsync(Booking booking); 
         Task<Booking> CreateBookingAsync(Booking booking);
         Task<Booking?> GetBookingByIdAsync(int id);
         Task<bool> DeleteBookingAsync(int id);

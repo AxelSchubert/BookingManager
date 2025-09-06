@@ -18,7 +18,7 @@ namespace BookingManager.Repositories
             var bookings = await _context.Bookings.ToListAsync();
             return bookings;
         }
-        public async Task<Booking?> UpdateBooking(Booking booking)
+        public async Task<Booking?> UpdateBookingAsync(Booking booking)
         {
             _context.Bookings.Update(booking);
             await _context.SaveChangesAsync();
