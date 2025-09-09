@@ -1,5 +1,5 @@
 ﻿using BookingManager.DTOs;
-using BookingManager.Services.IBookingService;
+using BookingManager.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 

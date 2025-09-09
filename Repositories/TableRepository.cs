@@ -29,7 +29,7 @@ namespace BookingManager.Repositories
             return true;
         }
 
-        public async Task<List<Table>> GetAllTableAsync()
+        public async Task<List<Table>> GetAllTablesAsync()
         {
             return await _context.Tables.ToListAsync();
         }

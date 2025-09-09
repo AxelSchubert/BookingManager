@@ -1,7 +1,7 @@
 ﻿using BookingManager.DTOs;
 using BookingManager.Models;
 
-namespace BookingManager.Services.IBookingService
+namespace BookingManager.Services
 {
     public interface IBookingService
     {

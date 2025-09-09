@@ -5,7 +5,7 @@ namespace BookingManager.Models
     public class Admin
     {
         [Key]
-        public int MyProperty { get; set; }
+        public int Id { get; set; }
         [Required]
         public string Username { get; set; }
         [Required]
