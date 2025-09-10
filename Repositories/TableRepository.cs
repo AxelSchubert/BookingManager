@@ -1,6 +1,5 @@
 ﻿using BookingManager.Data;
 using BookingManager.Models;
-using BookingManager.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace BookingManager.Repositories

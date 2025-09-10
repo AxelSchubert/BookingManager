@@ -1,6 +1,6 @@
 ﻿using BookingManager.DTOs;
 using BookingManager.Models;
-using BookingManager.Repositories.Interfaces;
+using BookingManager.Repositories;
 
 namespace BookingManager.Services
 {

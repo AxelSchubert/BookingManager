@@ -1,6 +1,6 @@
 ﻿using BookingManager.Models;
 
-namespace BookingManager.Repositories.Interfaces
+namespace BookingManager.Repositories
 {
     public interface ITableRepository
     {

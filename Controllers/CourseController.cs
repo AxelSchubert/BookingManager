@@ -1,6 +1,7 @@
 ﻿using BookingManager.DTOs;
 
 using BookingManager.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -29,6 +30,7 @@ namespace BookingManager.Controllers
             return Ok(course);
         }
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult<CourseDTO>> CreateCourse([FromBody] CreateCourseDTO course)
         {
             if (!ModelState.IsValid) { return BadRequest(ModelState); }
@@ -36,6 +38,7 @@ namespace BookingManager.Controllers
             return CreatedAtAction(nameof(GetCourseById), new { id = createdCourse.Id }, createdCourse);
         }
         [HttpPut("{id}")]
+        [Authorize]
         public async Task<ActionResult<CourseDTO>> UpdateCourse(int id, [FromBody] CourseDTO course)
         {
             if (course == null) { return BadRequest(); }
@@ -44,6 +47,7 @@ namespace BookingManager.Controllers
             return Ok(updatedCourse);
         }
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<ActionResult> DeleteCourse(int id)
         {
             var result = await _courseService.DeleteCourseAsync(id);

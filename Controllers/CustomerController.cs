@@ -1,6 +1,8 @@
 ﻿using BookingManager.DTOs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using BookingManager.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BookingManager.Controllers
 {
@@ -14,12 +16,14 @@ namespace BookingManager.Controllers
             _customerService = customerService;
         }
         [HttpGet]
+        [Authorize]
         public async Task<ActionResult<List<CustomerDTO>>> GetAllCustomers()
         {
             var customers = await _customerService.GetAllCustomersAsync();
             return Ok(customers);
         }
         [HttpGet("{id}")]
+        [Authorize]
         public async Task<ActionResult<CustomerDTO>> GetCustomerById(int id)
         {
             var customer = await _customerService.GetCustomerByIdAsync(id);
@@ -34,6 +38,7 @@ namespace BookingManager.Controllers
             return CreatedAtAction(nameof(GetCustomerById), new { id = createdCustomer.Id }, createdCustomer);
         }
         [HttpPut("{id}")]
+        [Authorize]
         public async Task<ActionResult<CustomerDTO>> UpdateCustomer(int id, [FromBody] CustomerDTO customer)
         {
             if (customer == null) { return BadRequest(); }
@@ -42,6 +47,7 @@ namespace BookingManager.Controllers
             return Ok(updatedCustomer);
         }
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<ActionResult> DeleteCustomer(int id)
         {
             var result = await _customerService.DeleteCustomerAsync(id);

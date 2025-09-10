@@ -1,10 +1,9 @@
 ﻿using BookingManager.DTOs;
 using BookingManager.Models;
 using BookingManager.Repositories;
-using BookingManager.Repositories.Interfaces;
 namespace BookingManager.Services
 {
-    public class BookingService
+    public class BookingService : IBookingService
     {
         private readonly IBookingRepository _repository;
 
@@ -26,7 +25,7 @@ namespace BookingManager.Services
                 TableId = b.TableId
             }).ToList();
         }
-        public async Task<BookingDTO?> UpdateBooking(BookingDTO booking, int id)
+        public async Task<BookingDTO?> UpdateBookingAsync(BookingDTO booking, int id)
         {
             var currentBooking = await _repository.GetBookingByIdAsync(id);
 
