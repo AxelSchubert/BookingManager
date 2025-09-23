@@ -1,5 +1,6 @@
 
 using System.Text;
+using BookingManager.Data;
 using BookingManager.Repositories;
 using BookingManager.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -67,6 +68,13 @@ namespace BookingManager
 
 
             app.MapControllers();
+
+            using (var scope = app.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+                var context = services.GetRequiredService<BookingManagerDBContext>();
+                SeedData.Initialize(context);
+            }
 
             app.Run();
         }

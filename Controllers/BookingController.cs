@@ -37,6 +37,12 @@ namespace BookingManager.Controllers
         public async Task<ActionResult<BookingDTO>> CreateBooking([FromBody] CreateBookingDTO booking)
         {
             if (!ModelState.IsValid) { return BadRequest(ModelState); }
+
+            if (booking.NumberOfGuests <= 0)
+            {
+                return BadRequest("Number of guests must be greater than zero.");
+            }
+
             if (booking.End == null)
             {
                 booking.End = booking.Start.AddHours(2);
@@ -52,11 +58,18 @@ namespace BookingManager.Controllers
                 return BadRequest("Booking end time must be after start time.");
             }
 
+            var requestedTable = await _tableService.GetTableByIdAsync(booking.TableId);
+
+            if (requestedTable == null)
+            {
+                return NotFound("Requested table does not exist.");
+            }
+
             var availableTables = await _tableService.GetAvailableTablesAsync(booking.Start, booking.NumberOfGuests);
 
-            if (!availableTables.Any())
+            if (!availableTables.Any(t => t.Id == booking.TableId))
             { 
-                return Conflict("No available tables for given time and number of guests.");
+                return Conflict("Requested table unavailable at the specified time.");
             }
 
             var createdBooking = await _bookingService.CreateBookingAsync(booking);
