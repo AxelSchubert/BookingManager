@@ -19,14 +19,14 @@ namespace BookingManager.Controllers
         }
 
         [HttpGet]
-        [Authorize]
+        //[Authorize]
         public async Task<ActionResult<List<BookingDTO>>> GetAllBookings()
         {
             var bookings = await _bookingService.GetAllBookingsAsync();
             return Ok(bookings);
         }
         [HttpGet("{id}")]
-            [Authorize]
+            //[Authorize]
         public async Task<ActionResult<BookingDTO>> GetBookingById(int id)
         {
             var booking = await _bookingService.GetBookingByIdAsync(id);
@@ -84,7 +84,7 @@ namespace BookingManager.Controllers
             return Ok(updatedBooking);
         }
         [HttpDelete("{id}")]
-        [Authorize]
+        //[Authorize]
         public async Task<ActionResult> DeleteBooking(int id)
         {
             var result = await _bookingService.DeleteBookingAsync(id);

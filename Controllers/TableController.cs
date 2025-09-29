@@ -29,7 +29,7 @@ namespace BookingManager.Controllers
             return Ok(table);
         }
         [HttpPost]
-        [Authorize]
+        ////[Authorize]
         public async Task<ActionResult<TableDTO>> CreateTable([FromBody] CreateTableDTO table)
         {
             if (!ModelState.IsValid) { return BadRequest(ModelState); }
@@ -37,7 +37,7 @@ namespace BookingManager.Controllers
             return CreatedAtAction(nameof(GetTableById), new { id = createdTable.Id }, createdTable);
         }
         [HttpPut("{id}")]
-        [Authorize]
+        //[Authorize]
         public async Task<ActionResult<TableDTO>> UpdateTable(int id, [FromBody] TableDTO table)
         {
             if (table == null) { return BadRequest(); }
@@ -46,7 +46,7 @@ namespace BookingManager.Controllers
             return Ok(updatedTable);
         }
         [HttpDelete("{id}")]
-        [Authorize]
+        //[Authorize]
         public async Task<ActionResult<TableDTO>> DeleteTable(int id)
         {
             var result = await _tableService.DeleteTableAsync(id);

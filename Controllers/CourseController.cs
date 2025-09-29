@@ -30,7 +30,7 @@ namespace BookingManager.Controllers
             return Ok(course);
         }
         [HttpPost]
-        [Authorize]
+        //[Authorize]
         public async Task<ActionResult<CourseDTO>> CreateCourse([FromBody] CreateCourseDTO course)
         {
             if (!ModelState.IsValid) { return BadRequest(ModelState); }
@@ -38,7 +38,7 @@ namespace BookingManager.Controllers
             return CreatedAtAction(nameof(GetCourseById), new { id = createdCourse.Id }, createdCourse);
         }
         [HttpPut("{id}")]
-        [Authorize]
+        //[Authorize]
         public async Task<ActionResult<CourseDTO>> UpdateCourse(int id, [FromBody] CourseDTO course)
         {
             if (course == null) { return BadRequest(); }
@@ -47,7 +47,7 @@ namespace BookingManager.Controllers
             return Ok(updatedCourse);
         }
         [HttpDelete("{id}")]
-        [Authorize]
+        //[Authorize]
         public async Task<ActionResult> DeleteCourse(int id)
         {
             var result = await _courseService.DeleteCourseAsync(id);
